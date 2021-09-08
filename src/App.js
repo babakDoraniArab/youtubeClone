@@ -1,5 +1,6 @@
-import { Container } from "react-bootstrap";
+import React, { useState } from "react";
 
+import { Container } from "react-bootstrap";
 import CategoriesBar from "./components/categoriesBar/CategoriesBar";
 import Header from "./components/header/Header";
 import HomeScreen from "./screen/homeScreen/HomeScreen";
@@ -8,12 +9,15 @@ import Video from "./components/Video/Video";
 import "./_app.scss";
 
 function App() {
+  const [sidebar, setSidebar] = useState(false);
+
+  const handleToggleSidebar = () => setSidebar(!sidebar);
   return (
     <>
-      <Header />
-      <div className="app__container border border-info">
-        <Sidebar />
-        <Container fluid className="app__main border border-warning">
+      <Header handleToggleSidebar={handleToggleSidebar} sidebar={sidebar} />
+      <div className="app__container ">
+        <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
+        <Container fluid className="app__main ">
           <HomeScreen />
         </Container>
       </div>

@@ -6,6 +6,7 @@
   width: 250px;
   height: 90vh;
   padding-top: 2rem;
+  transition: transform 0.2s ease-in;
 
   li {
     display: flex;
@@ -27,6 +28,9 @@
   hr {
     background-color: $border_color;
   }
+  &.open {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: $breakpoint_medium) {
@@ -44,6 +48,8 @@
 
 @media (max-width: $breakpoint_small) {
   .sidebar {
-    display: none;
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 999;
   }
 }
