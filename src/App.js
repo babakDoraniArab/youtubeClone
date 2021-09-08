@@ -7,6 +7,7 @@ import HomeScreen from "./screen/homeScreen/HomeScreen";
 import Sidebar from "./components/sidebar/Sidebar";
 import Video from "./components/Video/Video";
 import "./_app.scss";
+import LoginScreen from "./screen/loginScreen/LoginScreen";
 
 function App() {
   const [sidebar, setSidebar] = useState(false);
@@ -21,6 +22,8 @@ function App() {
           <HomeScreen />
         </Container>
       </div>
+
+      {/* <LoginScreen /> */}
     </>
   );
 }
