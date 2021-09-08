@@ -20,3 +20,13 @@ body {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.1px;
 }
+
+@mixin line-clamp($lineNumber) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lineNumber;
+  -webkit-box-orient: vertical;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
