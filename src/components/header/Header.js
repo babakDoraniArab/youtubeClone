@@ -3,7 +3,7 @@ import "./_header.scss"
 
 const Header = () => {
     return (
-        <div>
+        <div className="border border-dark">
                     header
         </div>
     )
