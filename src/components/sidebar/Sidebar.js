@@ -10,8 +10,15 @@ import {
   MdHome,
   MdSentimentDissatisfied,
 } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { log_out } from "../../redux/actions/auth.action";
 
 const Sidebar = ({ sidebar, handleToggleSidebar }) => {
+  const dispatch = useDispatch();
+  const handleLog_out = () => {
+    dispatch(log_out());
+  };
+
   return (
     <nav
       className={sidebar ? "sidebar open" : "sidebar"}
@@ -43,7 +50,7 @@ const Sidebar = ({ sidebar, handleToggleSidebar }) => {
         <span>I don't know</span>
       </li>
       <hr />
-      <li>
+      <li onClick={handleLog_out}>
         <MdExitToApp size={23} />
         <span>Log Out</span>
       </li>
