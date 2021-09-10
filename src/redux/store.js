@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { thunk } from "redux-thunk";
+import thunk from "redux-thunk";
 
 const initialState = {
-  name: "babak",
+  name: "Babak",
   age: "32",
 };
 const reducer = (initialState) => initialState;
