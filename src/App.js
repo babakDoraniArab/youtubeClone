@@ -7,12 +7,12 @@ import {
 } from "react-router-dom";
 
 import { Container } from "react-bootstrap";
-import CategoriesBar from "./components/categoriesBar/CategoriesBar";
+
 import Header from "./components/header/Header";
 import HomeScreen from "./screen/homeScreen/HomeScreen";
 import Sidebar from "./components/sidebar/Sidebar";
-import Video from "./components/Video/Video";
-import "./_app.scss"; 
+
+import "./_app.scss";
 import LoginScreen from "./screen/loginScreen/LoginScreen";
 const Layout = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);

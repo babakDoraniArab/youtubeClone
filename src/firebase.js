@@ -1,4 +1,6 @@
 import firebase from "firebase/app";
+import "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAU-VDyU5uGIEwNOfN21zFuQOoKGxYkZvQ",
   authDomain: "ytb-bablido.firebaseapp.com",
@@ -9,3 +11,5 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
+export default firebase.auth();
