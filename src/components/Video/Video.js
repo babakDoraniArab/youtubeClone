@@ -21,6 +21,10 @@ function Video({ video }) {
   const [channelIcon, setChannelIcon] = useState(null);
   const seconds = moment.duration(duration).asSeconds();
   const _duration = moment.utc(seconds * 1000).format("mm:ss");
+
+  //if id was an object so get the .videoId from it and if it was not an object go and get the id
+  const _videoId = id?.videoId || id;
+
   useEffect(() => {
     const get_video_details = async () => {
       const {
@@ -28,7 +32,7 @@ function Video({ video }) {
       } = await request("/videos", {
         params: {
           part: "contentDetails,statistics",
-          id: id,
+          id: _videoId,
         },
       });
       // console.log("videoItems", items);
@@ -36,7 +40,7 @@ function Video({ video }) {
       setViews(items[0].statistics.viewCount);
     };
     get_video_details();
-  }, [id]);
+  }, [_videoId]);
 
   useEffect(() => {
     const get_channel_icon = async () => {
