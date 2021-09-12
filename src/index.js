@@ -6,6 +6,7 @@ import store from "./redux/store";
 import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./_base.scss";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 ReactDOM.render(
   <React.StrictMode>
