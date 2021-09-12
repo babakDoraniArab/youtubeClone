@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Col, Container, Row } from "react-bootstrap";
 import CategoriesBar from "../../components/categoriesBar/CategoriesBar";
 import Video from "../../components/Video/Video";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Skeleton from "react-loading-skeleton";
 import {
   getPopularVideos,
   getVideosByCategory,
 } from "../../redux/actions/videos.action";
-
-import InfiniteScroll from "react-infinite-scroll-component";
 import "./_homeScreen.scss";
+
 function HomeScreen() {
   const dispatch = useDispatch();
-  const { videos, activeCategory } = useSelector((state) => state.homeVideos);
+  const { videos, activeCategory, loading } = useSelector(
+    (state) => state.homeVideos
+  );
 
   useEffect(() => {
     dispatch(getPopularVideos());
@@ -43,11 +45,17 @@ function HomeScreen() {
             </p>
           }
         >
-          {videos.map((video) => (
-            <Col lg={3} md={4}>
-              <Video key={video.id} video={video} />
-            </Col>
-          ))}
+          {loading
+            ? videos.map((video) => (
+                <Col lg={3} md={4}>
+                  <Video key={video.id} video={video} />
+                </Col>
+              ))
+            : [...Array(20)].map(() => {
+                <Col lg={3} md={4}>
+                  <Skeleton height={180} width="100%" />;
+                </Col>;
+              })}
         </InfiniteScroll>
       </Row>
     </Container>
