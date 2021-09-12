@@ -4,7 +4,9 @@ import { Col, Container, Row } from "react-bootstrap";
 import CategoriesBar from "../../components/categoriesBar/CategoriesBar";
 import Video from "../../components/Video/Video";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Skeleton from "react-loading-skeleton";
+
+import SkeletonVideo from "../../components/skeleton/SkeletonVideo";
+
 import {
   getPopularVideos,
   getVideosByCategory,
@@ -36,26 +38,28 @@ function HomeScreen() {
           dataLength={videos.length} //This is important field to render the next data
           next={fetchData}
           hasMore={true}
-          loader={
-            <div className="spinner-border text-danger d-block mx-auto"></div>
-          }
+          loader={[...Array(20)].map(() => (
+            <Col lg={3} md={3} className="mx-1">
+              <SkeletonVideo />
+            </Col>
+          ))}
           endMessage={
             <p style={{ textAlign: "center" }}>
               <b>Yay! You have seen it all</b>
             </p>
           }
         >
-          {loading
+          {!loading
             ? videos.map((video) => (
                 <Col lg={3} md={4}>
                   <Video key={video.id} video={video} />
                 </Col>
               ))
-            : [...Array(20)].map(() => {
+            : [...Array(20)].map(() => (
                 <Col lg={3} md={4}>
-                  <Skeleton height={180} width="100%" />;
-                </Col>;
-              })}
+                  <SkeletonVideo />
+                </Col>
+              ))}
         </InfiniteScroll>
       </Row>
     </Container>
