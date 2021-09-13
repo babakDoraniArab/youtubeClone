@@ -3,8 +3,8 @@ import { AiFillEye } from "react-icons/ai";
 import moment from "moment";
 import numeral from "numeral";
 import request from "../../api";
-import "./_video.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import "./_video.scss";
 function Video({ video }) {
   const {
     id,
