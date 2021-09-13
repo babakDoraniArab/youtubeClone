@@ -5,6 +5,7 @@ import numeral from "numeral";
 import request from "../../api";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./_video.scss";
+import { useHistory } from "react-router";
 function Video({ video }) {
   const {
     id,
@@ -22,6 +23,7 @@ function Video({ video }) {
   const [channelIcon, setChannelIcon] = useState(null);
   const seconds = moment.duration(duration).asSeconds();
   const _duration = moment.utc(seconds * 1000).format("mm:ss");
+  const history = useHistory();
 
   //if id was an object so get the .videoId from it and if it was not an object go and get the id
   const _videoId = id?.videoId || id;
@@ -59,8 +61,11 @@ function Video({ video }) {
     get_channel_icon();
   }, [channelId]);
 
+  const handleVideoClick = () => {
+    history.push(`/watch/${_videoId}`);
+  };
   return (
-    <div className="video">
+    <div className="video" onClick={handleVideoClick}>
       <div className="video__top">
         <LazyLoadImage effect="blur" src={medium.url} />
 
