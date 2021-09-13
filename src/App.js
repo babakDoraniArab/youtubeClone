@@ -10,7 +10,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import LoginScreen from "./screen/loginScreen/LoginScreen";
 
 import "./_app.scss";
-
+import WatchScreen from "./screen/watchScreen/WatchScreen";
 
 const Layout = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);
@@ -49,7 +49,13 @@ function App() {
       </Route>
       <Route path="/search" exact>
         <Layout>
-          <h1>searchme</h1>
+          <h1>Search Me</h1>
+        </Layout>
+      </Route>
+
+      <Route path="/watch/:id" exact>
+        <Layout>
+          <WatchScreen />
         </Layout>
       </Route>
 
