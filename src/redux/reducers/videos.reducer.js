@@ -1,7 +1,11 @@
+import request from "../../api";
 import {
   HOME_VIDEOS_FAIL,
   HOME_VIDEOS_REQUEST,
   HOME_VIDEOS_SUCCESS,
+  SELECTED_VIDEO_FAIL,
+  SELECTED_VIDEO_REQUEST,
+  SELECTED_VIDEO_SUCCESS,
 } from "../actionTypes";
 
 const initialState = {
@@ -40,6 +44,43 @@ export const homeVideosReducer = (state = initialState, action) => {
         loading: true,
       };
 
+    default:
+      return state;
+  }
+};
+
+const selectedVideoInitialState = {
+  loading: true,
+  video: null,
+};
+export const selectedVideoReducer = (
+  state = selectedVideoInitialState,
+  action
+) => {
+  const { payload, type } = action;
+
+  switch (type) {
+    case SELECTED_VIDEO_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        video: null,
+      };
+
+    case SELECTED_VIDEO_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        video: payload,
+      };
+
+    case SELECTED_VIDEO_FAIL:
+      return {
+        ...state,
+        loading: false,
+        video: null,
+        error: payload,
+      };
     default:
       return state;
   }

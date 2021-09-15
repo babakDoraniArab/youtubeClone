@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
 import Comments from "../../components/comments/Comments";
 import VideoHorizontal from "../../components/VideoHorizontal/VideoHorizontal";
 import VideoMetaData from "../../components/videoMetaData/VideoMetaData";
 import "./_watchScreen.scss";
+import { getVideoById } from "../../redux/actions/videos.action";
 
 const WatchScreen = () => {
   const { id } = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getVideoById(id));
+  }, [dispatch, id]);
 
   return (
     <Row>
